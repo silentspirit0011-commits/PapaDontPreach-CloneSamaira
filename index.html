@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Papa Don’t Preach – Pastel Dream</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;} /* smooth scroll */
+body{font-family:'Poppins',sans-serif;background:#F6F0FF;color:#4B3F72;overflow-x:hidden;}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 60px;background:#FFF4B8;position:sticky;top:0;z-index:10;}
+.logo img{height:60px;filter:drop-shadow(0 0 8px rgba(200,182,255,0.6));}
+nav ul{display:flex;gap:30px;list-style:none;}
+nav ul li a{text-decoration:none;color:#4B3F72;font-weight:500;position:relative;}
+nav ul li a::after{content:'';position:absolute;width:0;height:2px;left:0;bottom:-5px;background:#C8B6FF;transition:.3s;}
+nav ul li a:hover::after{width:100%;}
+
+/* HERO */
+.hero{position:relative;height:95vh;background:url("logobgp.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;filter:contrast(1.05) saturate(1.1);}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(255,244,184,.25),rgba(200,182,255,.25));}
+.hero-content{position:relative;z-index:2;}
+.hero h1{font-family:'Playfair Display',serif;font-size:64px;text-shadow:0 0 15px rgba(255,255,255,.6);animation:slideDown 1.5s forwards;}
+.hero p{margin-top:15px;opacity:0;animation:fadeText 2s forwards .5s;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeText{to{opacity:1;}}
+
+/* BUTTON */
+.btn{margin-top:25px;padding:12px 28px;background:#C8B6FF;border:none;border-radius:30px;cursor:pointer;font-weight:500;transition:.3s;}
+.btn:hover{box-shadow:0 0 15px #C8B6FF;transform:scale(1.05);}
+
+/* SECTION TITLES */
+.section-title{text-align:center;font-family:'Playfair Display',serif;font-size:42px;margin:100px 0 40px;}
+
+/* CATEGORY GRID */
+.banner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;padding:0 60px;}
+.banner{
+  height:70vh;border-radius:25px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:40px;color:white;
+  transition:transform .5s, box-shadow .5s;
+}
+.banner::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.2));transition:.5s;}
+.banner h3{position:relative;z-index:2;font-size:34px;font-family:'Playfair Display',serif;}
+
+/* HOVER EFFECT */
+.banner:hover{
+  transform:scale(1.05);
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+.banner:hover::before{
+  background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,.1));
+}
+
+/* BACKGROUNDS */
+.w1{background:url("wedd.jpg") center/cover;}
+.w2{background:url("yellowdress.jpg") center/cover;}
+.w3{background:url("purplelehenga.jpg") center/cover;}
+
+.f1{background:url("jmpp.jpg") center/cover;}
+.f2{background:url("short.jpg") center/cover;}
+.f3{background:url("festive.jpg") center/cover;}
+
+.a1{background:url("peppermint.jpg") center/cover;}
+.a2{background:url("bag.jpg") center/cover;}
+.a3{background:url("earing.jpg") center/cover;}
+
+/* FOOTER */
+footer{background:#4B3F72;color:white;padding:40px;text-align:center;margin-top:80px;}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><img src="logo.jpg"></div>
+  <ul>
+    <li><a href="#bridal">Bridal</a></li>
+    <li><a href="#festive">Festive</a></li>
+    <li><a href="#accessories">Accessories</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Papa Don’t Preach</h1>
+    <p>Couture in a dreamy pastel fantasy</p>
+    <button class="btn">Explore Collection</button>
+  </div>
+</section>
+
+<h2 class="section-title" id="bridal">Bridal Couture</h2>
+<div class="banner-grid">
+  <div class="banner w1"><h3>Royal Wedding Wear</h3></div>
+  <div class="banner w2"><h3>Floral Bridal Dreams</h3></div>
+  <div class="banner w3"><h3>Statement Lehengas</h3></div>
+</div>
+
+<h2 class="section-title" id="festive">Festive Wear</h2>
+<div class="banner-grid">
+  <div class="banner f1"><h3>Modern Festive</h3></div>
+  <div class="banner f2"><h3>Party Couture</h3></div>
+  <div class="banner f3"><h3>Color Pop Collection</h3></div>
+</div>
+
+<h2 class="section-title" id="accessories">Accessories</h2>
+<div class="banner-grid">
+  <div class="banner a1"><h3>Designer Footwear</h3></div>
+  <div class="banner a2"><h3>Luxury Bags</h3></div>
+  <div class="banner a3"><h3>Statement Earrings</h3></div>
+</div>
+
+<footer>
+  © 2026 Papa Don’t Preach | Pastel Edition ✨
+</footer>
+
+</body>
+</html>
