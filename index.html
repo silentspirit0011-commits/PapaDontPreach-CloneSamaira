@@ -3,22 +3,37 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Papa Don’t Preach – Pastel Dream</title>
+<title>Papa Don't Preach – Pastel Dream</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;} /* smooth scroll */
-body{font-family:'Poppins',sans-serif;background:#F6F0FF;color:#4B3F72;overflow-x:hidden;}
+body{font-family:'Poppins',sans-serif;background:#F6F0FF;color:#4B3F72;overflow-x:hidden;transition:background 0.3s, color 0.3s;}
+
+/* DARK MODE */
+body.dark-mode{background:#1a1625;color:#E8D9FF;}
+body.dark-mode nav{background:#2d2438;}
+body.dark-mode nav ul li a{color:#E8D9FF;}
+body.dark-mode nav ul li a::after{background:#9D84C7;}
+body.dark-mode footer{background:#2d2438;}
+body.dark-mode .section-title{color:#E8D9FF;}
+body.dark-mode .btn{background:#9D84C7;}
 
 /* NAV */
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 60px;background:#FFF4B8;position:sticky;top:0;z-index:10;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 60px;background:#FFF4B8;position:sticky;top:0;z-index:10;transition:background 0.3s;}
 .logo img{height:60px;filter:drop-shadow(0 0 8px rgba(200,182,255,0.6));}
 nav ul{display:flex;gap:30px;list-style:none;}
-nav ul li a{text-decoration:none;color:#4B3F72;font-weight:500;position:relative;}
+nav ul li a{text-decoration:none;color:#4B3F72;font-weight:500;position:relative;transition:color 0.3s;}
 nav ul li a::after{content:'';position:absolute;width:0;height:2px;left:0;bottom:-5px;background:#C8B6FF;transition:.3s;}
 nav ul li a:hover::after{width:100%;}
+nav ul li a.active{color:#9D84C7;font-weight:700;}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle{background:#C8B6FF;border:none;padding:8px 18px;border-radius:20px;cursor:pointer;font-weight:500;transition:.3s;color:#4B3F72;}
+.theme-toggle:hover{box-shadow:0 0 10px #C8B6FF;}
+body.dark-mode .theme-toggle{background:#9D84C7;color:#E8D9FF;}
 
 /* HERO */
 .hero{position:relative;height:95vh;background:url("logobgp.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;filter:contrast(1.05) saturate(1.1);}
@@ -33,8 +48,28 @@ nav ul li a:hover::after{width:100%;}
 .btn{margin-top:25px;padding:12px 28px;background:#C8B6FF;border:none;border-radius:30px;cursor:pointer;font-weight:500;transition:.3s;}
 .btn:hover{box-shadow:0 0 15px #C8B6FF;transform:scale(1.05);}
 
+/* DYNAMIC COLLECTION GRID */
+#collection-showcase{
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  padding:60px 60px 40px;
+  background:rgba(255,244,184,0.2);
+  margin-top:0;
+}
+#collection-showcase.show{display:grid;}
+.collection-item{
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:transform 0.3s;
+}
+.collection-item:hover{transform:translateY(-10px);}
+.collection-item img{width:100%;height:350px;object-fit:cover;display:block;}
+body.dark-mode #collection-showcase{background:rgba(45,36,56,0.4);}
+
 /* SECTION TITLES */
-.section-title{text-align:center;font-family:'Playfair Display',serif;font-size:42px;margin:100px 0 40px;}
+.section-title{text-align:center;font-family:'Playfair Display',serif;font-size:42px;margin:100px 0 40px;transition:color 0.3s;}
 
 /* CATEGORY GRID */
 .banner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;padding:0 60px;}
@@ -68,8 +103,11 @@ nav ul li a:hover::after{width:100%;}
 .a2{background:url("bag.jpg") center/cover;}
 .a3{background:url("earing.jpg") center/cover;}
 
+/* HIDE SECTION */
+.hidden{display:none !important;}
+
 /* FOOTER */
-footer{background:#4B3F72;color:white;padding:40px;text-align:center;margin-top:80px;}
+footer{background:#4B3F72;color:white;padding:40px;text-align:center;margin-top:80px;transition:background 0.3s;}
 </style>
 </head>
 
@@ -78,19 +116,34 @@ footer{background:#4B3F72;color:white;padding:40px;text-align:center;margin-top:
 <nav>
   <div class="logo"><img src="logo.jpg"></div>
   <ul>
-    <li><a href="#bridal">Bridal</a></li>
-    <li><a href="#festive">Festive</a></li>
-    <li><a href="#accessories">Accessories</a></li>
+    <li><a href="#bridal" class="nav-link">Bridal</a></li>
+    <li><a href="#festive" class="nav-link">Festive</a></li>
+    <li><a href="#accessories" class="nav-link">Accessories</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
 </nav>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Papa Don’t Preach</h1>
+    <h1>Papa Don't Preach</h1>
     <p>Couture in a dreamy pastel fantasy</p>
-    <button class="btn">Explore Collection</button>
+    <button class="btn" id="exploreBtn">Explore Collection</button>
   </div>
 </section>
+
+<!-- DYNAMIC COLLECTION SHOWCASE (Initially Hidden) -->
+<div id="collection-showcase">
+  <div class="collection-item"><img src="wedd.jpg" alt="Wedding Collection"></div>
+  <div class="collection-item"><img src="yellowdress.jpg" alt="Floral Bridal"></div>
+  <div class="collection-item"><img src="purplelehenga.jpg" alt="Statement Lehenga"></div>
+  <div class="collection-item"><img src="jmpp.jpg" alt="Modern Festive"></div>
+  <div class="collection-item"><img src="short.jpg" alt="Party Couture"></div>
+  <div class="collection-item"><img src="festive.jpg" alt="Color Pop"></div>
+  <div class="collection-item"><img src="peppermint.jpg" alt="Designer Footwear"></div>
+  <div class="collection-item"><img src="bag.jpg" alt="Luxury Bags"></div>
+  <div class="collection-item"><img src="earing.jpg" alt="Statement Earrings"></div>
+</div>
 
 <h2 class="section-title" id="bridal">Bridal Couture</h2>
 <div class="banner-grid">
@@ -107,15 +160,103 @@ footer{background:#4B3F72;color:white;padding:40px;text-align:center;margin-top:
 </div>
 
 <h2 class="section-title" id="accessories">Accessories</h2>
-<div class="banner-grid">
+<div class="banner-grid" id="accessoriesSection">
   <div class="banner a1"><h3>Designer Footwear</h3></div>
   <div class="banner a2"><h3>Luxury Bags</h3></div>
   <div class="banner a3"><h3>Statement Earrings</h3></div>
 </div>
 
 <footer>
-  © 2026 Papa Don’t Preach | Pastel Edition ✨
+  ©️ 2026 Papa Don't Preach | Pastel Edition ✨
 </footer>
+
+<script>
+// ========================================
+// 1. BUTTON CLICK INTERACTION - EXPLORE COLLECTION
+// ========================================
+// When "Explore Collection" button is clicked, toggle the display of collection images
+const exploreBtn = document.getElementById('exploreBtn');
+const collectionShowcase = document.getElementById('collection-showcase');
+
+exploreBtn.addEventListener('click', function() {
+  // Toggle the 'show' class to display/hide the collection grid
+  collectionShowcase.classList.toggle('show');
+  
+  // Smooth scroll to the collection showcase when it appears
+  if (collectionShowcase.classList.contains('show')) {
+    setTimeout(() => {
+      collectionShowcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+});
+
+// ========================================
+// 2. DYNAMIC CONTENT CHANGE - THEME TOGGLE (LIGHT/DARK MODE)
+// ========================================
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check localStorage for saved theme preference on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme');
+  
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️ Light';
+  } else {
+    themeToggle.textContent = '🌙 Dark';
+  }
+});
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', function() {
+  body.classList.toggle('dark-mode');
+  
+  // Update button text based on current theme
+  if (body.classList.contains('dark-mode')) {
+    themeToggle.textContent = '☀️ Light';
+    localStorage.setItem('theme', 'dark'); // Save preference
+  } else {
+    themeToggle.textContent = '🌙 Dark';
+    localStorage.setItem('theme', 'light'); // Save preference
+  }
+});
+
+// ========================================
+// 3. INTERACTIVE NAVIGATION - HIGHLIGHT ACTIVE MENU ITEM
+// ========================================
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', function() {
+    // Remove 'active' class from all nav links
+    navLinks.forEach(navLink => navLink.classList.remove('active'));
+    
+    // Add 'active' class to clicked link
+    this.classList.add('active');
+  });
+});
+
+// ========================================
+// 4. SHOW/HIDE SECTION - ACCESSORIES TOGGLE (BONUS FEATURE)
+// ========================================
+// Double-click on "Accessories" heading to toggle visibility of accessories section
+const accessoriesTitle = document.querySelector('#accessories');
+const accessoriesSection = document.querySelector('#accessoriesSection');
+
+accessoriesTitle.addEventListener('dblclick', function() {
+  // Toggle the 'hidden' class to show/hide accessories section
+  accessoriesSection.classList.toggle('hidden');
+  
+  // Visual feedback on the title
+  if (accessoriesSection.classList.contains('hidden')) {
+    this.style.opacity = '0.5';
+  } else {
+    this.style.opacity = '1';
+  }
+});
+
+</script>
 
 </body>
 </html>
