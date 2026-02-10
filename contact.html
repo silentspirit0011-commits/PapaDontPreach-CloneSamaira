@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Papa Don’t Preach</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#F6F0FF,#FFF4B8);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* CONTAINER */
+.contact-container{
+  background:white;
+  width:90%;
+  max-width:600px;
+  padding:50px;
+  border-radius:30px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+  animation:fadeUp 1.2s ease;
+}
+
+/* HEADING */
+.contact-container h1{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  margin-bottom:10px;
+  color:#4B3F72;
+}
+
+.contact-container p{
+  text-align:center;
+  margin-bottom:35px;
+  color:#6D5FA6;
+}
+
+/* FORM */
+form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+input, textarea{
+  padding:14px 18px;
+  border-radius:14px;
+  border:1px solid #E5D9FF;
+  font-size:15px;
+  outline:none;
+  transition:0.3s;
+}
+
+input:focus, textarea:focus{
+  border-color:#C8B6FF;
+  box-shadow:0 0 10px rgba(200,182,255,0.5);
+}
+
+textarea{
+  resize:none;
+  height:130px;
+}
+
+/* BUTTON */
+button{
+  margin-top:10px;
+  padding:14px;
+  background:#C8B6FF;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 30px rgba(200,182,255,0.6);
+}
+
+/* BACK LINK */
+.back-link{
+  margin-top:25px;
+  text-align:center;
+}
+
+.back-link a{
+  text-decoration:none;
+  color:#6D5FA6;
+  font-size:14px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="contact-container">
+  <h1>Get In Touch</h1>
+  <p>We’d love to hear from you 💌</p>
+
+  <form action="https://formspree.io/f/xykdgpbo" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="back-link">
+    <a href="index.html">← Back to Home</a>
+  </div>
+</div>
+
+</body>
+</html>
